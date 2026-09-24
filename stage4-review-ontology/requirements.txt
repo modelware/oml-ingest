@@ -1,0 +1,5 @@
+# Stage 4: Review the ontology (agentic RITE)
+# The deterministic review needs only the Python standard library.
+rdflib>=7.0          # only for --emit-ttl (Turtle serialization of the admitted ontology)
+anthropic            # only for --llm (claude-haiku-4-5 naming of coined families)
+# ANTHROPIC_API_KEY must be in a .env file when --llm is used.

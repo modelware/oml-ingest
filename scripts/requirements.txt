@@ -1,0 +1,24 @@
+# run_pipeline.py itself is pure standard library (argparse/subprocess/pathlib) —
+# it just invokes each stage as a subprocess using the same Python interpreter.
+# This file is the union of all seven stages' requirements.txt, so a single
+# `pip install -r requirements.txt` from here covers a full end-to-end run.
+
+# Stage 1 (surface candidates): spaCy NER pass
+spacy>=3.7
+# spaCy English model (install separately, pip can't fetch this one):
+#   python -m spacy download en_core_web_sm
+pydantic>=2.0       # validates the Stage 1 LLM JSON reply; not needed with --no-llm
+
+# Stages 0, 1, 1b, 3, 4: Claude LLM calls (claude-haiku-4-5)
+anthropic            # not needed if you run every stage with --no-llm
+
+# Stage 2 (name vocabulary): embeddings + optional clustering
+numpy>=1.24
+scikit-learn>=1.3    # (optional) available for clustering experiments
+openai>=1.0          # embeddings (text-embedding-3-small); not needed with --no-embeddings
+
+# Stage 4 (review ontology): Turtle serialization
+rdflib>=7.0          # only for --emit-ttl
+
+# API keys: ANTHROPIC_API_KEY (Claude stages) and OPENAI_API_KEY (Stage 2
+# embeddings) must be set in a .env file — see ../.env.example.

@@ -1,0 +1,4 @@
+# Stage 0: Scope and summarize
+# Deterministic structure mining needs only the Python standard library.
+anthropic            # only for --llm (claude-haiku-4-5 scope synthesis)
+# ANTHROPIC_API_KEY must be in a .env file when --llm is used.

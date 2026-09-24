@@ -1,0 +1,4 @@
+# Stage 1b: Classify candidates (type/instance gate)
+# The deterministic gate needs only the Python standard library.
+anthropic            # only for --llm (claude-haiku-4-5 type/instance tiebreak)
+# ANTHROPIC_API_KEY must be in a .env file when --llm is used.
